@@ -25,10 +25,10 @@
             return $this->connection;
         }
 
-        public function select(...$parameters)
+        public function select(string $sql, array $params)
         {
-            $request=getConnection()->prepare($parameters[1]);
-            $request->execute(array($parameters[2]));
+            $request=getConnection()->prepare($sql);
+            $request->execute($params);
 
             while($d=fetch_assoc($request))
 					{
